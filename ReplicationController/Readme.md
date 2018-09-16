@@ -1,0 +1,6 @@
+参数说明：
+1、kind属性，用来表明此资源对象的类型，比如值为ReplicationController,表示这个一个RC。
+
+2、spec中是对RC的相关属性定义，比如spec.selector是RC的pod标签选择器，即监控和管理拥有这些标签的pod实例，确保当前集群上始终有且仅有replicas个pod实例在运行，设置replicas=1表示只能运行一个mysql pod实例。
+
+当集群中运行的pod实例小于relicas时，RC会根据spec.template中定义的pod模板来生成一个新的实例，spec.template.metadata.labels指定了该pod的标签，需要特别注意的是，这里的labels必须匹配之前的spec.selector，否则此RC每次创建一个无法匹配label的pod，就会不停的尝试创建新的pod，最终陷入无限循环，直至挂掉。

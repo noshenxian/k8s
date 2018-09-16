@@ -1,0 +1,1 @@
+创建完RC后，创建service来关联刚刚创建的mysql服务
