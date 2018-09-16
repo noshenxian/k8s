@@ -1,0 +1,16 @@
+（环境准备）
+1、关闭防火墙
+systemctl disable firewalld
+systemctl stop firewalld
+
+2、安装etcd和keubernetes(会自动安装docker)
+yum install -y etcd keubernetes
+
+3、按顺序启动服务
+systemctl start ectd
+systemctl start docker
+systemctl start kube-apiserver
+systemctl start kube-controller-manager
+systemctl start kube-scheduler
+systemctl start keubelet
+systemctl start kube-proxy
